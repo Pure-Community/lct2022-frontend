@@ -1,0 +1,12 @@
+.example {
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    &__button-container {
+        display: flex;
+        justify-content: space-around;
+    }
+}
