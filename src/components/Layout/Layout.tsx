@@ -8,9 +8,7 @@ interface LayoutProps {
 const Layout: FC<LayoutProps> = ({ children }) => {
     return (
         <>
-            <NotLoggedRedirect />
             <header >
-                dfsfd
             </header>
             {children}
         </>

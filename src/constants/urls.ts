@@ -1,15 +1,13 @@
-const API = 'http://194.87.98.202:8000/'
+
 
 // ко всем запросам в заголовок будет прикрепляться авторизационный токен
 // по нему нужно проводить аутентификацию и не выдавать лишнюю инфу где не надо
 // тем не менее, нужно выдавать инфу о самом пользователе  
 // например, по запросу profile без параметров выдаются данные профиля зарегистрированного пользователя
-const URLS: {
-    [key: string]: any // TODO сделать тип строка или функция возвращающая строку
-} = {
+const URLS = {
     // login
-    login: 'login',
-    registration: 'registration',
+    login: 'auth/login',
+    registration: 'auth/registration',
     // profile
     profileInfo: (id?: string) => `profile/info${id ? `?id=${id}` : ''}`,
     profileInfoChange: 'profile/info/change',
@@ -34,9 +32,5 @@ const URLS: {
     changeComment: (id: string) => `comment/change?id=${id}`,
     likeComment: (id: string) => `comment/like?id=${id}`
 }
-
-Object.keys(URLS).forEach(k => {
-    URLS[k] = API + URLS[k]
-})
 
 export default URLS
