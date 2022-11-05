@@ -2,7 +2,7 @@ import axios from 'axios';
 import { Home } from 'pages';
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import './index.scss'
 import { observer } from "mobx-react-lite";
 import AppStore from 'stores/AppStore';
@@ -13,6 +13,7 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import Login from 'pages/Login';
 import Registration from 'pages/Registration';
+import Line from 'pages/Line';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -31,7 +32,7 @@ const App = observer(() => {
     <BrowserRouter>
       <Layout>
         <Routes>
-          <Route path='/'>
+          <Route path='/' element={<Line />}>
             <Route path='/profile' element='profile' />
             <Route path='/login' element={<Login />} />
             <Route path='/registration' element={<Registration />} />
