@@ -2,7 +2,7 @@ import { Button, TextField } from '@mui/material'
 import axios from 'axios'
 import URLS from 'constants/urls'
 import { FC, useState } from 'react'
-import { useLocation, useNavigate } from 'react-router'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { sendRequest } from 'utils/requests'
 import './Registration.scss'
 
