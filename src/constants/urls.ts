@@ -13,7 +13,7 @@ const URLS = {
     profileInfoChange: 'profile/info/change',
     // profileAvatar: 'profile/avatar'
     // idea
-    ideas: 'ideas',
+    ideas: 'idea/get_all_ideas',
     ideasTinder: 'ideas?tinder=true',
     idea: (id: string) => `idea?id=${id}`,
     ideaDetailed: (id: string) => `idea?id=${id}&full=true`,
@@ -30,7 +30,8 @@ const URLS = {
     createComment: (postId: string) => `comment/create?id=${postId}`,
     deleteComment: (id: string) => `comment/delete?id=${id}`, // id комментария
     changeComment: (id: string) => `comment/change?id=${id}`,
-    likeComment: (id: string) => `comment/like?id=${id}`
+    likeComment: (id: string) => `comment/like?id=${id}`,
+    photo: (id: string) => `static/photo?file_id=${id}`
 }
 
 export default URLS

@@ -1,4 +1,24 @@
+@import './breakpoints';
+
 @mixin flexColumn {
     display: flex;
     flex-direction: column;
 }
+
+@mixin pageDynamicPaddings {
+    @include large-screen {
+        padding: 36px 128px;
+    }
+
+    @include medium-screen {
+        padding: 24px 32px;
+    }
+    
+    @include tablet-screen {
+        padding: 16px 24px;
+    }
+    
+    @include phone-screen {
+        padding: 16px 24px;
+    }
+} 

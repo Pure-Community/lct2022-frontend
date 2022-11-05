@@ -2,7 +2,13 @@ html {
     font-family: 'Roboto', Arial, Helvetica, sans-serif;
 }
 
-.bubbles {
-    width: 100%;
-    height: 50vh;
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+.main {
+    padding: 0 50px;
+    display: flex;
+    justify-content: space-around;
 }

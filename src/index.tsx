@@ -10,6 +10,7 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import Registration from 'pages/Registration';
+import Line from 'pages/Line';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from 'pages/Login';
 import Preferences from 'pages/Preferences';
@@ -32,6 +33,7 @@ const App = observer(() => {
       <Layout>
         <Routes>
           <Route path='/'>
+            <Route path='' element={<Line />} />
             <Route path='/profile' element='profile' />
             <Route path='/login' element={<Login />} />
             <Route path='/registration' element={<Registration />} />

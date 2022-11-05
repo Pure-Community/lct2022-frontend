@@ -1,0 +1,18 @@
+@import '../../styles/colors';
+@import '../../styles/effects';
+
+.header {
+    padding: 2px;
+
+    &__link, &__link:visited {
+        text-decoration: none;
+    }
+
+    &__link {
+        @include linkHover();
+    }
+
+    &__logo {
+        margin-right: 24px;
+    }
+}
