@@ -3,6 +3,7 @@ import React, { FC, ReactNode } from 'react'
 import { AppBar, Toolbar, IconButton, Typography, Button } from "@mui/material";
 import { LoginRounded } from "@mui/icons-material";
 import './Layout.scss'
+import { Link } from 'react-router-dom';
 
 interface LayoutProps {
     children: ReactNode
@@ -23,15 +24,17 @@ const Layout: FC<LayoutProps> = ({ children }) => {
                     <Typography className='header__link' variant="h6" component="a" href='idea/create' sx={{ flexGrow: 1 }}>
                         Создать идею
                     </Typography>
-                    <IconButton
-                        size="large"
-                        edge="start"
-                        color="inherit"
-                        aria-label="menu"
-                        sx={{ mr: 2 }}
-                    >
-                        <LoginRounded />
-                    </IconButton>
+                    <Link className='header__link' to={'/login'}>
+                        <IconButton
+                            size="large"
+                            edge="start"
+                            color="inherit"
+                            aria-label="menu"
+                            sx={{ mr: 2 }}
+                        >
+                            <LoginRounded />
+                        </IconButton>
+                    </Link>
                 </Toolbar>
             </AppBar>
             {children}

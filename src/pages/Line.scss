@@ -1,9 +1,21 @@
+@import '../styles/breakpoints';
+@import '../styles/mixin';
+
 .page-line {
-    padding: 36px 128px;
+    @include pageDynamicPaddings();
 
     &__cards {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, minmax(200px, 1fr));
+        
+        @include tablet-screen {
+            grid-template-columns: repeat(2, minmax(200px, 1fr));
+        }
+
+        @include phone-screen {
+            grid-template-columns: repeat(1, minmax(200px, 1fr));
+        }
+
         gap: 16px;
     }
 }

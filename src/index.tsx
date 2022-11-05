@@ -32,7 +32,8 @@ const App = observer(() => {
     <BrowserRouter>
       <Layout>
         <Routes>
-          <Route path='/' element={<Line />}>
+          <Route path='/'>
+            <Route path='' element={<Line />} />
             <Route path='/profile' element='profile' />
             <Route path='/login' element={<Login />} />
             <Route path='/registration' element={<Registration />} />

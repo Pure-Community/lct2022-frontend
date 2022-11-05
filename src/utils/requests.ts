@@ -30,4 +30,4 @@ const sendRequest = async (method: "get" | 'post', url: string, body?: {}) => {
     }
 }
 
-export { sendRequest }
+export { sendRequest, API }

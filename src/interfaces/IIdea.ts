@@ -22,7 +22,8 @@ type IIdeaCard = Pick<IIdea,
     'likes_count' |
     'comments_count' |
     'approved' |
-    'author'
+    'author' |
+    'photo_ids'
 >
 
 export default IIdea
