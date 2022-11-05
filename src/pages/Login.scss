@@ -1,0 +1,35 @@
+@import '../styles/colors';
+@import '../styles/effects';
+@import '../styles/mixin';
+
+.page-login {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 20vh;
+
+    &__content {
+        @include flexColumn();
+        justify-content: space-between;
+        background-color: $surface;
+        border-radius: 16px;
+        @include elevation2();
+        padding: 64px 36px 36px;
+    }   
+
+    &__form {
+        @include flexColumn();
+        
+        & > div {
+            margin-bottom: 36px;
+        }
+    }
+
+    &__buttons {
+        display: flex;
+        justify-content: flex-end;
+
+        & > button {
+            margin-left: 16px;
+        }
+    }
+}
