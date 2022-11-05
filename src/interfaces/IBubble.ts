@@ -1,6 +1,4 @@
 interface IBubble {
-    radius: number,
-    color: string,
     label: string,
 }
 
