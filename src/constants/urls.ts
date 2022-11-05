@@ -13,7 +13,7 @@ const URLS = {
     profileInfoChange: 'profile/info/change',
     // profileAvatar: 'profile/avatar'
     // idea
-    ideas: 'ideas',
+    ideas: 'idea/get_all_ideas',
     ideasTinder: 'ideas?tinder=true',
     idea: (id: string) => `idea?id=${id}`,
     ideaDetailed: (id: string) => `idea?id=${id}&full=true`,

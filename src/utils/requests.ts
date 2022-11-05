@@ -19,13 +19,13 @@ const sendRequest = async (method: "get" | 'post', url: string, body?: {}) => {
     if (method === "get") {
         return await axios
             .get(`${API}${url}`)
-            .then(responce => ({ ...responce, requestSuccess: true }))
+            .then(responce => responce.data)
             .catch(handleError)
     } else {
         console.log('post');
         return await axios
             .post(`${API}${url}`, body)
-            .then(responce => ({ ...responce, requestSuccess: true }))
+            .then(responce => responce.data)
             .catch(handleError)
     }
 }
