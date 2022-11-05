@@ -72,4 +72,8 @@
         transition: all .25s ease-in-out;
         cursor: pointer;
     }
+
+    &__title {
+        color: $grayDark;
+    }
 }

@@ -1,5 +1,8 @@
+@import './styles/colors';
+
 html {
     font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    background: $background;
 }
 
 html, body {
@@ -11,4 +14,10 @@ html, body {
     padding: 0 50px;
     display: flex;
     justify-content: space-around;
+}
+
+h1 {
+    font-size: 26px;
+    line-height: 30px;
+    color: $grayTitle
 }

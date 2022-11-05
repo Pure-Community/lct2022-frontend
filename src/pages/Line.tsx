@@ -4,6 +4,7 @@ import './Line.scss'
 import IIdea, { IIdeaCard } from "interfaces/IIdea";
 import { sendRequest } from 'utils/requests';
 import URLS from 'constants/urls';
+import { Link } from 'react-router-dom';
 
 function Line() {
     const [cards, setCards] = useState<IIdeaCard[]>([])
