@@ -53,7 +53,7 @@ const Idea: FC = () => {
                                 </div>
                             </Wallpaper> : null
                     }
-                    <div className='page-idea'>Idea</div>
+                    <div className='page-idea'>{ideaData.description}</div>
                 </>
                 : <div>loader</div>}
         </>
