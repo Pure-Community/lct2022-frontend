@@ -1,0 +1,87 @@
+@import '../styles/colors';
+@import '../styles/effects';
+@import '../styles/mixin';
+
+.page-preferences {
+    @include pageCenterDynamic();
+    
+    &__content {
+        @include flexColumn();
+        justify-content: space-between;
+        background-color: $surface;
+        border-radius: 16px;
+        @include elevation2();
+        padding: 64px 36px 36px;
+    }   
+
+    &__form {
+        @include flexColumn();
+    }
+
+    &__input {
+        margin-bottom: 24px !important;
+    }
+
+    &__buttons {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 16px;
+
+        & > button {
+            margin-left: 16px;
+        }
+    }
+
+    &__bottom-bar {
+        border-top: 1px solid #79747E;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding-top: 24px;
+        margin-top: 24px;
+    }
+
+    &__alt-text {
+        margin: 0;
+        display: flex;
+        align-items: center;
+        color: $subtitle;
+    }
+
+    &__alt-button:first-child {
+       margin-left: 12px;
+    }
+
+    &__alt-button {
+        border: none;
+        background: none;
+        margin-left: 2px;
+        border-radius: 8px;
+        @include flexColumn();
+        justify-content: space-around;
+        align-items: center;
+        transition: all .25s ease-in-out;
+        width: 36px;
+        height: 36px;
+    }
+
+    &__alt-button:hover {
+        background: rgb(192, 192, 192);
+        transition: all .25s ease-in-out;
+        cursor: pointer;
+    }
+
+    &__title {
+        color: $grayDark;
+    }
+}
+
+#matter-container {
+    display: flex;
+    justify-content: space-around;
+
+    & > canvas {
+        width: 100%;
+    }
+}

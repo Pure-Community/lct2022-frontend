@@ -1,5 +1,8 @@
 interface IBubble {
-    label: string,
+    id: number
+    name: string
+    circle_id: string
+    weight: number
 }
 
 export default IBubble

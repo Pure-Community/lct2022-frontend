@@ -4,15 +4,16 @@ import AlertStore from "stores/AlertStore"
 const API = 'http://194.87.98.202:8000/api/'
 
 const handleError = (e: any) => {
-    if (e.responce) {
-        AlertStore.setAlert({ text: e.data.message })
+    if (e.response) {
+        AlertStore.setAlert({ text: e.response.data.message })
+        return { data: e.response.data, error: true }
     } else if (e.request) {
         AlertStore.setAlert({ text: 'Ошибка при отправке запроса' })
     } else {
         AlertStore.setAlert({ text: 'Ошибка при отправке запроса' })
     }
 
-    return { requestSuccess: false }
+    return { data: {}, error: true }
 }
 
 const sendRequest = async (method: "get" | 'post', url: string, body?: {}, headers?: {}) => {

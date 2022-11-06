@@ -8,6 +8,9 @@ const URLS = {
     // login
     login: 'auth/login',
     registration: 'auth/registration',
+    skills: 'utils/get_skills',
+    saveSkills: 'user/edit_skills',
+    skillsIdeas: 'utils/get_idea_tags',
     // profile
     profileInfo: (id: string) => `user/get_user_by_id?user_id=${id}`,
     profileInfoChange: 'profile/info/change',

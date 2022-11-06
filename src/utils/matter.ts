@@ -1,10 +1,10 @@
+import URLS from 'constants/urls';
 import { Engine, Render, Runner, Bodies, Composite, Mouse, MouseConstraint, World, Common, Events, Bounds, Body } from 'matter-js'
 import IBubble from "../interfaces/IBubble";
+import { API } from './requests';
 
-function useMatterEngine(bubbles: IBubble[], onBubbleClick: (label: string) => void) {
-    console.log('create engine');
-    
-    // create engine
+function createEngine(bubbles: IBubble[],
+    onUpdateWeight: (bubbleId: number, action: 'up' | 'down') => void) {
     var engine = Engine.create()
 
     // create renderer
@@ -12,8 +12,8 @@ function useMatterEngine(bubbles: IBubble[], onBubbleClick: (label: string) => v
         element: document.getElementById('matter-container'),
         engine: engine,
         options: {
-            width: document.documentElement.clientWidth,
-            height: document.documentElement.clientHeight,
+            width: document.documentElement.clientWidth / 2,
+            height: document.documentElement.clientHeight / 2,
             background: 'white',
             wireframes: false,
         },
@@ -53,14 +53,16 @@ function useMatterEngine(bubbles: IBubble[], onBubbleClick: (label: string) => v
         Bodies.circle(
             Common.random(0, render.options.width),
             Common.random(0, render.options.height),
-            80,
+            40,
             {
                 render: {
                     fillStyle: 'red',
-                    // sprite: {
-                    // },
+                    sprite: {
+                        texture: `${API}${URLS.photo(b.circle_id)}`,
+                    },
                 },
-                label: b.label,
+                name: b.name,
+                id: b.id,
                 mass: 50,
                 frictionAir: 0.1,
             }
@@ -125,19 +127,24 @@ function useMatterEngine(bubbles: IBubble[], onBubbleClick: (label: string) => v
                 var body = bodies[i]
                 if (Bounds.contains(body.bounds, mouseConstraint.mouse.position)) {
                     var id = body.id
-
+                    var bub = bubbles.find(b => b.id === id)
                     // TODO: тут прилетает id, по которому кликнули, соотв. изначально значение 1, тыкнули, 2, потом 3, 4 и
                     // снова 1 и так по кругу
-                    
+
                     var x = body.bounds.max.x - body.bounds.min.x
                     // TODO: тут прилетает
-                    onBubbleClick(body.label)
-                    if (x > 220) {
+                    if (x > 110) {
+                        if (bub) {
+                            onUpdateWeight(bub.id, 'down')
+                        }
                         let scale = 1 / Math.pow(1.15, 3)
                         Body.scale(body, scale, scale)
                         body.render.sprite.xScale *= scale
                         body.render.sprite.yScale *= scale
                     } else {
+                        if (bub) {
+                            onUpdateWeight(bub.id, 'up')
+                        }
                         Body.scale(body, 1.15, 1.15)
                         body.render.sprite.xScale *= 1.15
                         body.render.sprite.yScale *= 1.15
@@ -149,4 +156,4 @@ function useMatterEngine(bubbles: IBubble[], onBubbleClick: (label: string) => v
     })
 }
 
-export default useMatterEngine
+export default createEngine

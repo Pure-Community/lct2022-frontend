@@ -14,7 +14,9 @@ export class AppStore implements IAppStore {
     id: string | null = null
 
     constructor() {
-        this.authToken = window.localStorage.getItem('authToken')
+        let authToken = window.localStorage.getItem('authToken')
+        if (authToken && authToken[0] === '"') authToken = authToken.substring(1, authToken.length - 1)
+        this.authToken = authToken
         this.id = window.localStorage.getItem('profileId')
         makeAutoObservable(this)
     };

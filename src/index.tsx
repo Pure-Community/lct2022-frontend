@@ -12,7 +12,6 @@ import Registration from 'pages/Registration';
 import Line from 'pages/Line';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from 'pages/Login';
-import Preferences from 'pages/Preferences';
 import Idea from 'pages/Idea';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import IdeaCreate from 'pages/IdeaCreate';
@@ -22,6 +21,7 @@ import { sendRequest } from 'utils/requests';
 import URLS from 'constants/urls';
 import UserStore from 'stores/UserStore';
 import Logout from 'pages/Logout';
+import Profile from 'pages/Profile';
 
 
 const root = ReactDOM.createRoot(
@@ -55,7 +55,7 @@ const App = observer(() => {
 
   useEffect(() => {
     axios.defaults.headers.common['Authorization'] = `Bearer ${appStore.authToken}`
-    console.log('set token header - ', appStore.authToken);
+    console.log(`Bearer ${appStore.authToken}`);
   }, [appStore.authToken])
 
   useEffect(() => {
@@ -73,11 +73,11 @@ const App = observer(() => {
             <Routes>
               <Route path='/'>
                 <Route path='' element={<Line />} />
-                <Route path='profile' element='profile' />
+                <Route path='profile' element={<Profile />} />
                 <Route path='login' element={<Login />} />
                 <Route path='logout' element={<Logout />} />
                 <Route path='registration' element={<Registration />} />
-                <Route path='preferences' element={<Preferences />} />
+                {/* <Route path='preferences' element={<Preferences />} /> */}
                 <Route path='idea' >
                   <Route path=':id' element={<Idea />} />
                   <Route path='create' element={<IdeaCreate />} />
@@ -92,7 +92,7 @@ const App = observer(() => {
 })
 
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  // <React.StrictMode>
+  <App />
+  // </React.StrictMode>
 );
