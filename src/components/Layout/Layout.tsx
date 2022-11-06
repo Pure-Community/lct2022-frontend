@@ -32,7 +32,7 @@ const Layout: FC<LayoutProps> = observer(({ children }) => {
                         Лента идей
                     </Typography>
                     <Typography className='header__link' variant="h6" component="a" href='/tinder' sx={{ flexGrow: 1 }}>
-                        Не тиндер
+                        Tidear
                     </Typography>
                     {/* <Typography className='header__link' variant="h6" component="a" href='idea/create' sx={{ flexGrow: 1 }}>
                         Создать идею
