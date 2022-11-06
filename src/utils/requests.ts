@@ -15,16 +15,16 @@ const handleError = (e: any) => {
     return { requestSuccess: false }
 }
 
-const sendRequest = async (method: "get" | 'post', url: string, body?: {}) => {
+const sendRequest = async (method: "get" | 'post', url: string, body?: {}, headers?: {}) => {
     if (method === "get") {
         return await axios
-            .get(`${API}${url}`)
+            .get(`${API}${url}`, headers)
             .then(responce => responce.data)
             .catch(handleError)
     } else {
         console.log('post');
         return await axios
-            .post(`${API}${url}`, body)
+            .post(`${API}${url}`, body, headers)
             .then(responce => responce.data)
             .catch(handleError)
     }

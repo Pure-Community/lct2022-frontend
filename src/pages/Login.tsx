@@ -3,6 +3,7 @@ import axios from 'axios'
 import URLS from 'constants/urls'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import AppStore from 'stores/AppStore'
 import { sendRequest } from 'utils/requests'
 import './Login.scss'
 
@@ -13,13 +14,18 @@ const Login = () => {
 
     const setLoginData = async () => {
         const result = sendRequest('post', URLS.login, {
-            login: login,
+            username: login,
             password: password,
             grant_type: 'password'
+        }, {
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
         })
             .then(res => {
+                AppStore.setId(res.user_id)
+                AppStore.setToken(res.access_token)
                 navigate('/')
             })
+            .catch(console.log)
     }
 
     return (

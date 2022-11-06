@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.scss'
 import { observer } from "mobx-react-lite";
-import AppStore from 'stores/AppStore';
+import AppStore, { IAppStore } from 'stores/AppStore';
 import { Layout } from 'components';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
@@ -16,6 +16,7 @@ import Login from 'pages/Login';
 import Preferences from 'pages/Preferences';
 import Idea from 'pages/Idea';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import IdeaCreate from 'pages/IdeaCreate';
 
 
 const root = ReactDOM.createRoot(
@@ -23,7 +24,7 @@ const root = ReactDOM.createRoot(
 );
 
 const App = observer(() => {
-  const [token] = useState(AppStore.authToken)
+  // const [AppStore] = useState<IAppStore>(():IAppStore => new AppStore())
 
   const themeOptions = createTheme({
     palette: {
@@ -50,7 +51,6 @@ const App = observer(() => {
   useEffect(() => {
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
     console.log('set token header - ', token);
-
   }, [token])
 
   return (
@@ -60,11 +60,14 @@ const App = observer(() => {
           <Routes>
             <Route path='/'>
               <Route path='' element={<Line />} />
-              <Route path='/profile' element='profile' />
-              <Route path='/login' element={<Login />} />
-              <Route path='/registration' element={<Registration />} />
-              <Route path='/preferences' element={<Preferences />} />
-              <Route path='/idea/:id' element={<Idea />} />
+              <Route path='profile' element='profile' />
+              <Route path='login' element={<Login />} />
+              <Route path='registration' element={<Registration />} />
+              <Route path='preferences' element={<Preferences />} />
+              <Route path='idea' >
+                <Route path=':id' element={<Idea />} />
+                <Route path='create' element={<IdeaCreate />} />
+              </Route>
             </Route>
           </Routes>
         </Layout>
