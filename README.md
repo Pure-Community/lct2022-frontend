@@ -1,3 +1,5 @@
+# Приложение запущено по адресу http://194.87.98.202
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
