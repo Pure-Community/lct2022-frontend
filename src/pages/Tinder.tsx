@@ -1,6 +1,7 @@
-import { BookmarkAddOutlined, CloseOutlined, FavoriteBorderOutlined, ThumbDownAltOutlined } from '@mui/icons-material'
+import { AccountCircleOutlined, BookmarkAddOutlined, CloseOutlined, FavoriteBorderOutlined, ThumbDownAltOutlined } from '@mui/icons-material'
 import { Button, IconButton } from '@mui/material'
 import axios from 'axios'
+import { Wallpaper } from 'components'
 import ProtectedLogin from 'components/ProtectedLogin/ProtectedLogin'
 import URLS from 'constants/urls'
 import AppStoreContext from 'context/AppStoreContext'
@@ -39,25 +40,33 @@ const Tinder = () => {
         loadNext()
     }, [appStore.authToken])
 
-    function resolveWallpaper() {
-        if (idea?.video_id) {
-            return <video className='page-tinder__media'>
-                <source src={`${API}${URLS.video(idea.video_id)}`} />
-            </video>
-        } else if (idea?.logo_id) {
-            return <img className='page-tinder__media' src={`${API}${URLS.photo(idea.logo_id)}`} />
-        } else if (idea?.photo_ids && idea.photo_ids[0]) {
-            return <img className='page-tinder__media' src={`${API}${URLS.photo(idea.photo_ids[0])}`} />
-        }
-    }
-
     return (
         <ProtectedLogin>
             <main className='page-tinder'>
-                <div className='page-tinder__content'>
-                    <div className="page-tinder__idea">
-                        {resolveWallpaper()}
-                    </div>
+                {idea && <div className='page-tinder__content'>
+                    <Wallpaper url={idea.logo_id ? idea.logo_id : idea.photo_ids ? idea.photo_ids[0] : ''} videoUrl={idea.video_id} className='page-tinder__idea'>
+                        <h1>
+                            {idea.title.replace('Инстаграм', 'Инстаграм* \n (ПРОДУКТ КОМАНИИ Meta** - ЗАПРЕЩЕННОЙ В РОССИИ ЭКСТРЕМИСТСКОЙ ОРГАНИЗАЦИИ)')}
+                        </h1>
+                        <div className='page-idea__description'>
+                            <AccountCircleOutlined className='page-idea__author-icon' />
+                            {idea.author.login}
+                            <svg width="24" height="36" viewBox="0 0 24 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <line x1="11.5" y1="36" x2="11.5" stroke="#E8B7D5" />
+                            </svg>
+                            <p className='page-idea__likes'>{idea.likes_count}</p>
+                            <FavoriteBorderOutlined />
+                            <svg width="24" height="36" viewBox="0 0 24 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <line x1="11.5" y1="36" x2="11.5" stroke="#E8B7D5" />
+                            </svg>
+                            <Button variant='contained' color="secondary">
+                                Подписаться
+                            </Button>
+                            <Button variant='contained' color="secondary">
+                                Присоединиться
+                            </Button>
+                        </div>
+                    </Wallpaper>
                     {idea && <div className='page-tinder__buttons'>
                         <IconButton className='page-tinder__icon-button' onClick={() => loadNext()}>
                             <CloseOutlined />
@@ -77,7 +86,7 @@ const Tinder = () => {
                             <FavoriteBorderOutlined />
                         </IconButton>
                     </div>}
-                </div>
+                </div>}
             </main>
         </ProtectedLogin>
     )

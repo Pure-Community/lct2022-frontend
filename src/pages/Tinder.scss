@@ -48,4 +48,14 @@
         height: 48px;
         margin: 0 12px;
     }
+
+    &__idea {
+        color: $white;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-start;
+        padding: 24px;
+        box-sizing: border-box;
+    }
 }

@@ -7,13 +7,13 @@
     @include pageDynamicPaddings();
 
     &__header {
+        padding: 24px 128px;
         @include pageDynamicPaddings();
         color: $white;
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
         align-items: flex-start;
-        padding: 24px 128px;
         box-sizing: border-box;
     }
 
