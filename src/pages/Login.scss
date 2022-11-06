@@ -3,9 +3,7 @@
 @import '../styles/mixin';
 
 .page-login {
-    display: flex;
-    justify-content: space-around;
-    padding-top: 20vh;
+    @include pageCenterDynamic();
 
     &__content {
         @include flexColumn();

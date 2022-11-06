@@ -13,13 +13,12 @@ const Login = () => {
 
     const setLoginData = async () => {
         const result = sendRequest('post', URLS.login, {
-            username: login,
+            login: login,
             password: password,
             grant_type: 'password'
         })
             .then(res => {
-                if (res.requestSuccess) navigate('/ideas')
-                else console.log('error');
+                navigate('/')
             })
     }
 

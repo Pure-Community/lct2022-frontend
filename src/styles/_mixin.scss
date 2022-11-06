@@ -22,3 +22,19 @@
         padding: 16px 24px;
     }
 } 
+
+@mixin pageCenterDynamic {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 20vh;
+
+    @include tablet-screen {
+        padding-top: 10vh;
+    }
+
+    @include phone-screen {
+        padding-top: 16px
+    }
+}
