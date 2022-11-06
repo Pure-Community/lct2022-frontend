@@ -21,6 +21,12 @@ const Tinder = () => {
             })
     }
 
+    const dislike = async () => {
+        if (idea?.id) {
+            sendRequest('post', URLS.ideaDislike(idea?.id))
+        }
+    }
+
     const like = async () => {
         if (idea?.id) {
             sendRequest('post', URLS.ideaLike(idea?.id))
@@ -56,39 +62,39 @@ const Tinder = () => {
                             </svg>
                             <p className='page-idea__likes'>{idea.likes_count}</p>
                             <FavoriteBorderOutlined />
-                            <svg width="24" height="36" viewBox="0 0 24 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            {/* <svg width="24" height="36" viewBox="0 0 24 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <line x1="11.5" y1="36" x2="11.5" stroke="#E8B7D5" />
-                            </svg>
-                            <Button variant='contained' color="secondary">
+                            </svg> */}
+                            {/* <Button variant='contained' color="secondary">
                                 Подписаться
                             </Button>
                             <Button variant='contained' color="secondary">
                                 Присоединиться
-                            </Button>
+                            </Button> */}
                         </div>
                     </Wallpaper>
                     {idea && <div className='page-tinder__buttons'>
-                        <IconButton className='page-tinder__icon-button' onClick={() => loadNext()}>
+                        <IconButton className='page-tinder__icon-button' onClick={() => {
+                            dislike().then(_ => loadNext())
+                        }}>
                             <CloseOutlined />
                         </IconButton>
                         <IconButton className='page-tinder__icon-button'
                             onClick={() => {
-                                join()
-                                loadNext()
+                                join().then(_ => loadNext())
                             }}>
                             <BookmarkAddOutlined />
                         </IconButton>
                         <IconButton className='page-tinder__icon-button'
                             onClick={() => {
-                                like()
-                                loadNext()
+                                like().then(_ => loadNext())
                             }}>
                             <FavoriteBorderOutlined />
                         </IconButton>
                     </div>}
                 </div>}
             </main>
-        </ProtectedLogin>
+        </ProtectedLogin >
     )
 }
 

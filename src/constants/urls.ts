@@ -39,7 +39,7 @@ const URLS = {
     getNext: 'idea/get_unwatched_idea',
     // media
     photo: (id: string) => `static/photo?file_id=${id}`,
-    video: (id: string) => `static/video?file_id=${id}`,
+    video: (id: string) => `static/video_stream?file_id=${id}`,
 
 }
 

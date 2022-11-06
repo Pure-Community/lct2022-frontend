@@ -4,6 +4,10 @@ import AlertStore from "stores/AlertStore"
 const API = 'http://194.87.98.202:8000/api/'
 
 const handleError = (e: any) => {
+    if (e.response.status === 401) {
+        window.localStorage.removeItem('authToken')
+        window.localStorage.removeItem('profileId')
+    }
     if (e.response) {
         AlertStore.setAlert({ text: e.response.data.message })
         return { data: e.response.data, error: true }
