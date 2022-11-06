@@ -12,7 +12,7 @@ const IdeaCard: FC<IIdeaCard> = ({ photo_ids, approved, author, comments_count, 
         : `linear-gradient(180deg, rgba(206, 68, 255, 0.4275) 0%, rgba(139, 63, 192, 0.536126) 23.44%, rgba(94, 60, 150, 0.608544) 39.06%, rgba(36, 55, 95, 0.702687) 59.37%, rgba(6, 53, 68, 0.75) 69.58%)`
 
     return (
-        <div className='idea-card' onClick={() => navigate(`idea/${id}`)} style={{ background: bgStyle, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
+        <div className='idea-card' onClick={() => navigate(`/idea/${id}`)} style={{ background: bgStyle, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
             <h3 className='idea-card__title'>{title}</h3>
             <div className="idea-card__bottom">
                 <p className="idea-card__description">{description}</p>
