@@ -29,6 +29,13 @@
         @include pageDynamicPaddings();
         box-sizing: border-box;
         justify-content: flex-end;
+        position: relative;
+    }
+
+    &__edit {
+        position: absolute;
+        right: 16px;
+        bottom: 16px;
     }
 
     &__block-title {
@@ -49,5 +56,41 @@
             gap: 16px;
 
         }
+    }
+}
+
+.profile-settings {
+    background-color: $background;
+    border-radius: 16px;
+    padding: 32px 64px;
+    @include large-screen {
+        margin: 40vh 20vw;
+    }
+    
+    @include medium-screen {
+        margin: 40vh 20vw;
+    }
+
+    @include tablet-screen {
+        margin: 40vh 0;
+    }
+
+    @include phone-screen {
+        margin: 10vh 0;
+    }
+
+    display: flex;
+    flex-direction: column;
+
+    & > h1 {
+        color: $grayDark;
+    }
+
+    & > div {
+        margin-top: 16px;
+    }
+    
+    & > button {
+        margin-top: 16px;
     }
 }

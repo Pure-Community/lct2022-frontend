@@ -17,6 +17,7 @@ const URLS = {
     profileIdeas: 'idea/get_my_ideas',
     getSkills: 'user/get_my_skills',
     likedIdeas: 'user/liked_ideas',
+    profileEdit: 'user/edit_profile',
     // profileAvatar: 'profile/avatar'
     // idea
     ideas: 'idea/get_all_ideas',
