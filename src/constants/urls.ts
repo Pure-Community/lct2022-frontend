@@ -9,7 +9,7 @@ const URLS = {
     login: 'auth/login',
     registration: 'auth/registration',
     // profile
-    profileInfo: (id?: string) => `profile/info${id ? `?id=${id}` : ''}`,
+    profileInfo: (id: string) => `user/get_user_by_id?user_id=${id}`,
     profileInfoChange: 'profile/info/change',
     // profileAvatar: 'profile/avatar'
     // idea

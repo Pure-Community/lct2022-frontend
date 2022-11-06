@@ -1,9 +1,9 @@
 import { Button, TextField, Typography } from '@mui/material'
 import axios from 'axios'
 import URLS from 'constants/urls'
-import { useState } from 'react'
+import AppStoreContext from 'context/AppStoreContext'
+import { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import AppStore from 'stores/AppStore'
 import { sendRequest } from 'utils/requests'
 import './Login.scss'
 
@@ -11,6 +11,7 @@ const Login = () => {
     const [login, setLogin] = useState('')
     const [password, setPassword] = useState('')
     const navigate = useNavigate()
+    const appStore = useContext(AppStoreContext)
 
     const setLoginData = async () => {
         const result = sendRequest('post', URLS.login, {
@@ -21,8 +22,8 @@ const Login = () => {
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
         })
             .then(res => {
-                AppStore.setId(res.user_id)
-                AppStore.setToken(res.access_token)
+                appStore.setId(res.user_id)
+                appStore.setToken(res.access_token)
                 navigate('/')
             })
             .catch(console.log)

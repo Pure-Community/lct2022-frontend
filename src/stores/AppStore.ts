@@ -9,11 +9,11 @@ interface IAppStore {
     setId: (id: string) => void
 }
 
-class AppStore implements IAppStore, Object {
+export class AppStore implements IAppStore {
     authToken: string | null = null
     id: string | null = null
 
-    constructor()  {
+    constructor() {
         this.authToken = window.localStorage.getItem('authToken')
         this.id = window.localStorage.getItem('profileId')
         makeAutoObservable(this)
@@ -34,5 +34,5 @@ class AppStore implements IAppStore, Object {
     }
 }
 
-export default AppStore
-export type {IAppStore}
+// export default class AppStore
+// export type { IAppStore }

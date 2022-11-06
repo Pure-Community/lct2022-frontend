@@ -1,9 +1,8 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.scss'
 import { observer } from "mobx-react-lite";
-import AppStore, { IAppStore } from 'stores/AppStore';
 import { Layout } from 'components';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
@@ -17,6 +16,12 @@ import Preferences from 'pages/Preferences';
 import Idea from 'pages/Idea';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import IdeaCreate from 'pages/IdeaCreate';
+import { AppStore } from 'stores/AppStore';
+import AppStoreContext, { AppStoreContextProvider } from 'context/AppStoreContext';
+import { sendRequest } from 'utils/requests';
+import URLS from 'constants/urls';
+import UserStore from 'stores/UserStore';
+import Logout from 'pages/Logout';
 
 
 const root = ReactDOM.createRoot(
@@ -24,7 +29,7 @@ const root = ReactDOM.createRoot(
 );
 
 const App = observer(() => {
-  // const [AppStore] = useState<IAppStore>(():IAppStore => new AppStore())
+  const appStore = useContext(AppStoreContext)
 
   const themeOptions = createTheme({
     palette: {
@@ -49,30 +54,40 @@ const App = observer(() => {
 
 
   useEffect(() => {
-    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
-    console.log('set token header - ', token);
-  }, [token])
+    axios.defaults.headers.common['Authorization'] = `Bearer ${appStore.authToken}`
+    console.log('set token header - ', appStore.authToken);
+  }, [appStore.authToken])
+
+  useEffect(() => {
+    if (appStore.id) {
+      sendRequest('get', URLS.profileInfo(appStore.id))
+        .then(res => UserStore.setUser(res))
+    }
+  }, [appStore.id])
 
   return (
-    <ThemeProvider theme={themeOptions}>
-      <BrowserRouter>
-        <Layout>
-          <Routes>
-            <Route path='/'>
-              <Route path='' element={<Line />} />
-              <Route path='profile' element='profile' />
-              <Route path='login' element={<Login />} />
-              <Route path='registration' element={<Registration />} />
-              <Route path='preferences' element={<Preferences />} />
-              <Route path='idea' >
-                <Route path=':id' element={<Idea />} />
-                <Route path='create' element={<IdeaCreate />} />
+    <AppStoreContextProvider value={appStore}>
+      <ThemeProvider theme={themeOptions}>
+        <BrowserRouter>
+          <Layout>
+            <Routes>
+              <Route path='/'>
+                <Route path='' element={<Line />} />
+                <Route path='profile' element='profile' />
+                <Route path='login' element={<Login />} />
+                <Route path='logout' element={<Logout />} />
+                <Route path='registration' element={<Registration />} />
+                <Route path='preferences' element={<Preferences />} />
+                <Route path='idea' >
+                  <Route path=':id' element={<Idea />} />
+                  <Route path='create' element={<IdeaCreate />} />
+                </Route>
               </Route>
-            </Route>
-          </Routes>
-        </Layout>
-      </BrowserRouter>
-    </ThemeProvider>
+            </Routes>
+          </Layout>
+        </BrowserRouter>
+      </ThemeProvider>
+    </AppStoreContextProvider>
   )
 })
 
