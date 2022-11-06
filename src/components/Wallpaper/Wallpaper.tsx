@@ -12,8 +12,9 @@ const Wallpaper: FC<{ url: string, videoUrl?: string, children?: ReactNode, clas
                 return (
                     <div className='wallpaper'>
                         <video autoPlay muted loop className='wallpaper__video-container'>
-                            <source src={`${API}${URLS.video(url)}`} />
+                            <source src={`${API}${URLS.video(videoUrl)}`} />
                         </video>
+                        <div className='wallpaper__blur' />
                         <div className={`wallpaper ${className}`}>
                             {children}
                         </div>
@@ -22,14 +23,14 @@ const Wallpaper: FC<{ url: string, videoUrl?: string, children?: ReactNode, clas
             } else if (url) {
                 return <div
                     className={`wallpaper ${className}`}
-                    style={{ background: `linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.232879) 15.1%, rgba(0, 0, 0, 0.441667) 28.65%, rgba(0, 0, 0, 0.51053) 43.23%, rgba(0, 0, 0, 0.606448) 63.54%, rgba(0, 0, 0, 0.670043) 75.52%, rgba(0, 0, 0, 0.8) 100%), url(${API}${URLS.photo(url)})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center' }} >
+                    style={{ backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.232879) 15.1%, rgba(0, 0, 0, 0.441667) 28.65%, rgba(0, 0, 0, 0.51053) 43.23%, rgba(0, 0, 0, 0.606448) 63.54%, rgba(0, 0, 0, 0.670043) 75.52%, rgba(0, 0, 0, 0.8) 100%), url(${API}${URLS.photo(url)})` }} >
                     {children}
                 </div>
             }
             return (
                 <div
                     className={`wallpaper ${className}`}
-                    style={{ background: `linear-gradient(180deg, rgba(14, 0, 102, 0.1) 0%, rgba(32, 0, 101, 0.3396) 23.96%, rgba(34, 0, 65, 0.7) 50%, rgba(39, 0, 55, 0.8344) 73.44%, #330037 100%, #330037 100%)` }} >
+                    style={{ backgroundImage: `linear-gradient(180deg, rgba(14, 0, 102, 0.1) 0%, rgba(32, 0, 101, 0.3396) 23.96%, rgba(34, 0, 65, 0.7) 50%, rgba(39, 0, 55, 0.8344) 73.44%, #330037 100%, #330037 100%)` }} >
                     {children}
                 </div>
             )

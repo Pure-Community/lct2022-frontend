@@ -14,6 +14,9 @@ const URLS = {
     // profile
     profileInfo: (id: string) => `user/get_user_by_id?user_id=${id}`,
     profileInfoChange: 'profile/info/change',
+    profileIdeas: 'idea/get_my_ideas',
+    getSkills: 'user/get_my_skills',
+    likedIdeas: 'user/liked_ideas',
     // profileAvatar: 'profile/avatar'
     // idea
     ideas: 'idea/get_all_ideas',
@@ -39,7 +42,7 @@ const URLS = {
     getNext: 'idea/get_unwatched_idea',
     // media
     photo: (id: string) => `static/photo?file_id=${id}`,
-    video: (id: string) => `static/video_stream?file_id=${id}`,
+    video: (id: string) => `static/video?file_id=${id}`,
 
 }
 

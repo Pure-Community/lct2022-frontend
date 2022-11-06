@@ -5,6 +5,7 @@ import { Wallpaper } from 'components'
 import ProtectedLogin from 'components/ProtectedLogin/ProtectedLogin'
 import URLS from 'constants/urls'
 import AppStoreContext from 'context/AppStoreContext'
+import useAuthorization from 'hooks/useAuthorization'
 import IIdea from 'interfaces/IIdea'
 import React, { useContext, useEffect, useState } from 'react'
 import { API, sendRequest } from 'utils/requests'
@@ -13,6 +14,7 @@ import './Tinder.scss'
 const Tinder = () => {
     const [idea, setIdea] = useState<IIdea>()
     const appStore = useContext(AppStoreContext)
+    useAuthorization(appStore.authToken)
 
     const loadNext = async () => {
         sendRequest('get', URLS.getNext)
@@ -23,19 +25,19 @@ const Tinder = () => {
 
     const dislike = async () => {
         if (idea?.id) {
-            sendRequest('post', URLS.ideaDislike(idea?.id))
+            sendRequest('post', URLS.ideaDislike(idea?.id)).then(_ => loadNext())
         }
     }
 
     const like = async () => {
         if (idea?.id) {
-            sendRequest('post', URLS.ideaLike(idea?.id))
+            sendRequest('post', URLS.ideaLike(idea?.id)).then(_ => loadNext())
         }
     }
 
     const join = async () => {
         if (idea?.id) {
-            sendRequest('post', URLS.ideaJoinRequest(idea?.id))
+            sendRequest('post', URLS.ideaJoinRequest(idea?.id)).then(_ => loadNext())
         }
     }
 
@@ -75,19 +77,19 @@ const Tinder = () => {
                     </Wallpaper>
                     {idea && <div className='page-tinder__buttons'>
                         <IconButton className='page-tinder__icon-button' onClick={() => {
-                            dislike().then(_ => loadNext())
+                            dislike()
                         }}>
                             <CloseOutlined />
                         </IconButton>
                         <IconButton className='page-tinder__icon-button'
                             onClick={() => {
-                                join().then(_ => loadNext())
+                                join()
                             }}>
                             <BookmarkAddOutlined />
                         </IconButton>
                         <IconButton className='page-tinder__icon-button'
                             onClick={() => {
-                                like().then(_ => loadNext())
+                                like()
                             }}>
                             <FavoriteBorderOutlined />
                         </IconButton>

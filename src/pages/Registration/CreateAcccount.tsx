@@ -1,9 +1,9 @@
 import { Button, TextField } from '@mui/material'
 import axios from 'axios'
 import URLS from 'constants/urls'
+import AppStoreContext from 'context/AppStoreContext'
 import { RegistrationStepProps } from 'pages/Registration'
-import { FC, useState } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
+import React, { FC, useState, useContext } from 'react'
 import { sendRequest } from 'utils/requests'
 import '../Registration.scss'
 
@@ -13,6 +13,7 @@ const CreateAcccount: FC<RegistrationStepProps> = ({ next, prev }) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [password2, setPassword2] = useState('')
+    const appStore = useContext(AppStoreContext)
 
     const setLoginData = async () => {
         const result = sendRequest('post', URLS.registration, {
@@ -23,7 +24,11 @@ const CreateAcccount: FC<RegistrationStepProps> = ({ next, prev }) => {
             .then(res => {
                 if (res.error) {
 
-                } else next()
+                } else {
+                    appStore.setId(res.user_id)
+                    appStore.setToken(res.access_token)
+                    next()
+                }
             })
     }
 

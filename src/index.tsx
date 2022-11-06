@@ -56,10 +56,10 @@ const App = observer(() => {
   })
 
 
-  useEffect(() => {
-    axios.defaults.headers.common['Authorization'] = `Bearer ${appStore.authToken}`
-    console.log(`Bearer ${appStore.authToken}`);
-  }, [appStore.authToken])
+  // useEffect(() => {
+  //   axios.defaults.headers.common['Authorization'] = `Bearer ${appStore.authToken}`
+  //   console.log(`Bearer ${appStore.authToken}`);
+  // }, [appStore.authToken])
 
   useEffect(() => {
     if (appStore.id) {

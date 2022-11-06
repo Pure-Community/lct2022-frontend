@@ -3,6 +3,10 @@
 
 .wallpaper {
     position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 100;
     @include large-screen {
         height: 380px;
     }
@@ -23,6 +27,14 @@
         width: 100%;
         position: absolute;
         z-index: 1;
+    }
+
+    &__blur {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 10;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.95) 69.58%);
     }
 }
 

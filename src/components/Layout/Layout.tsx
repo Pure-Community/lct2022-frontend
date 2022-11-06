@@ -1,5 +1,5 @@
 import NotLoggedRedirect from 'components/Redirect/Redirect'
-import React, { FC, ReactNode, useContext } from 'react'
+import React, { FC, ReactNode, useContext, useEffect } from 'react'
 import { AppBar, Toolbar, IconButton, Typography, Button } from "@mui/material";
 import { LoginRounded } from "@mui/icons-material";
 import './Layout.scss'
@@ -8,6 +8,7 @@ import { observer } from 'mobx-react-lite';
 import UserStore from 'stores/UserStore';
 import ProfileBlock from 'components/ProfileBlock/ProfileBlock';
 import AppStoreContext from 'context/AppStoreContext';
+import axios from 'axios';
 
 interface LayoutProps {
     children: ReactNode
@@ -16,6 +17,11 @@ interface LayoutProps {
 const Layout: FC<LayoutProps> = observer(({ children }) => {
     const { user } = UserStore
     const appStore = useContext(AppStoreContext)
+
+    useEffect(() => {
+        axios.defaults.headers.common['Authorization'] = `Bearer ${appStore.authToken}`
+        console.log(`Bearer ${appStore.authToken}`);
+    }, [appStore.authToken])
 
     return (
         <>
