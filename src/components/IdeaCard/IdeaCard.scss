@@ -10,7 +10,11 @@
     padding: 117px 26px 17px 23px;
     border-radius: 8px;
     color: $white;
-    background-size: cover;
+    cursor: pointer;
+
+    & {
+        
+    }
     
     @include large-screen {
         height: 220px;
@@ -26,6 +30,9 @@
     
     @include phone-screen {
         height: 120px;
+    }
+
+    &__title {
     }
 
     &__description {

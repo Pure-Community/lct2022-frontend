@@ -1,0 +1,42 @@
+@import '../styles/breakpoints';
+@import '../styles/colors';
+@import '../styles/effects';
+@import '../styles/mixin';
+
+.page-idea {
+    @include pageDynamicPaddings();
+
+    &__header {
+        @include pageDynamicPaddings();
+        color: $white;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-start;
+        padding: 24px 128px;
+        box-sizing: border-box;
+    }
+
+    &__description {
+        color: $secondaryLight;
+        display: flex;
+        align-items: center;
+
+        & > p {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+    }
+
+    &__author {
+        display: flex;
+    }
+
+    &__author-icon {
+        margin-right: 8px;
+    }
+    
+    &__likes {
+        margin-right: 8px;
+    }
+}

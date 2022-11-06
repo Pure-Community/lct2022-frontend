@@ -15,7 +15,7 @@ const URLS = {
     // idea
     ideas: 'idea/get_all_ideas',
     ideasTinder: 'ideas?tinder=true',
-    idea: (id: string) => `idea?id=${id}`,
+    idea: (id: string) => `idea/get_idea_by_id?id=${id}`,
     ideaDetailed: (id: string) => `idea?id=${id}&full=true`,
     ideaCreate: 'idea/create',
     ideaChange: (id: string) => `idea/change?id=${id}`,

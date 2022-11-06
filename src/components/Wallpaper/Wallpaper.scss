@@ -1,0 +1,19 @@
+@import '../../styles/breakpoints';
+
+.wallpaper {
+    @include large-screen {
+        height: 380px;
+    }
+    
+    @include medium-screen {
+        height: 380px;
+    }
+    
+    @include tablet-screen {
+        height: 280px;
+    }
+    
+    @include phone-screen {
+        height: 320px;
+    }
+}
