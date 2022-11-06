@@ -1,0 +1,51 @@
+@import '../styles/breakpoints';
+@import '../styles/colors';
+@import '../styles/effects';
+@import '../styles/mixin';
+
+.page-tinder {
+    @include pageCenterDynamic();
+
+    &__content {
+        @include flexColumn();
+        justify-content: space-between;
+        background-color: $surface;
+        border-radius: 16px;
+        @include elevation2();
+        padding: 64px 36px 36px;
+    }   
+
+    &__form {
+        @include flexColumn();
+        
+        & > div {
+            margin-bottom: 36px;
+        }
+    }
+
+    &__buttons {
+        display: flex;
+        justify-content: center;
+        margin-top: 16px;
+
+        & > button {
+            margin-left: 16px;
+        }
+    }
+
+    &__title {
+        color: $grayDark;
+    }
+
+    &__media {
+        width: 100%;
+    }
+
+    &__icon-button {
+        background-color: #FFD8D8;
+        color: #722555;
+        width: 48px;
+        height: 48px;
+        margin: 0 12px;
+    }
+}

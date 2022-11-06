@@ -22,9 +22,14 @@ const Login = () => {
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
         })
             .then(res => {
-                appStore.setId(res.user_id)
-                appStore.setToken(res.access_token)
-                navigate('/')
+                if (res.error) {
+
+                } else {
+                    appStore.setId(res.user_id)
+                    appStore.setToken(res.access_token)
+                    navigate('/')
+                }
+
             })
             .catch(console.log)
     }

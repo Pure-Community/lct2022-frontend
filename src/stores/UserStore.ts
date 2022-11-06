@@ -4,12 +4,13 @@ import { makeAutoObservable } from "mobx";
 interface IUserStore {
     user: IUser | null
     setUser: (user: IUser) => void
+    getUser: () => void
     logout: () => void
 }
 
 class UserStore implements IUserStore {
     user: IUser | null;
-    
+
     constructor() {
         this.user = null
         makeAutoObservable(this)
@@ -20,6 +21,9 @@ class UserStore implements IUserStore {
     public logout() {
         this.user = null
     };
+    public getUser() {
+        return this.user
+    }
 }
 
 export default new UserStore();

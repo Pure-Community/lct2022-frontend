@@ -34,6 +34,10 @@ export class AppStore implements IAppStore {
         this.id = id
         window.localStorage.setItem('profileId', JSON.stringify(id))
     }
+
+    public isAuthenticated() {
+        return this.authToken && this.id
+    }
 }
 
 // export default class AppStore

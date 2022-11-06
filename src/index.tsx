@@ -22,6 +22,8 @@ import URLS from 'constants/urls';
 import UserStore from 'stores/UserStore';
 import Logout from 'pages/Logout';
 import Profile from 'pages/Profile';
+import Tinder from 'pages/Tinder';
+import ProtectedLogin from 'components/ProtectedLogin/ProtectedLogin';
 
 
 const root = ReactDOM.createRoot(
@@ -30,6 +32,7 @@ const root = ReactDOM.createRoot(
 
 const App = observer(() => {
   const appStore = useContext(AppStoreContext)
+  console.log(UserStore.user);
 
   const themeOptions = createTheme({
     palette: {
@@ -77,11 +80,11 @@ const App = observer(() => {
                 <Route path='login' element={<Login />} />
                 <Route path='logout' element={<Logout />} />
                 <Route path='registration' element={<Registration />} />
-                {/* <Route path='preferences' element={<Preferences />} /> */}
                 <Route path='idea' >
                   <Route path=':id' element={<Idea />} />
                   <Route path='create' element={<IdeaCreate />} />
                 </Route>
+                <Route path='tinder' element={<Tinder />} />
               </Route>
             </Routes>
           </Layout>

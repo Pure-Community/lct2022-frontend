@@ -29,7 +29,7 @@ const Idea: FC = () => {
                     {
                         ideaData.photo_ids
                             && ideaData.photo_ids[0]
-                            ? <Wallpaper url={ideaData.photo_ids[0]} className='page-idea__header'>
+                            ? <Wallpaper url={ideaData.logo_id ?? ideaData.photo_ids[0]} videoUrl={ideaData.video_id} className='page-idea__header'>
                                 <h1>
                                     {ideaData.title.replace('Инстаграм', 'Инстаграм* \n (ПРОДУКТ КОМАНИИ Meta** - ЗАПРЕЩЕННОЙ В РОССИИ ЭКСТРЕМИСТСКОЙ ОРГАНИЗАЦИИ)')}
                                 </h1>

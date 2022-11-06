@@ -21,11 +21,12 @@ const URLS = {
     idea: (id: string) => `idea/get_idea_by_id?id=${id}`,
     ideaDetailed: (id: string) => `idea?id=${id}&full=true`,
     ideaCreate: 'idea/create',
-    ideaChange: (id: string) => `idea/change?id=${id}`,
-    ideaSave: (id: string) => `idea/save?id=${id}`,
-    ideaDelete: (id: string) => `idea/delete?id=${id}`,
-    ideaLike: (id: string) => `idea/like?id=${id}`,
-    ideaJoinRequest: (id: string) => `idea/join-request?id=${id}`,
+    ideaChange: (id: number) => `idea/change?id=${id}`,
+    ideaSave: (id: number) => `idea/save?id=${id}`,
+    ideaDelete: (id: number) => `idea/delete?id=${id}`,
+    ideaLike: (id: number) => `idea/like?id=${id}`,
+    ideaDislike: (id: number) => `idea/dislike?id=${id}`,
+    ideaJoinRequest: (id: number) => `idea/request_membership?id=${id}`,
     // admin
     ideaApprove: (id: string) => `idea/approve?id=${id}`,
     // comment
@@ -34,7 +35,12 @@ const URLS = {
     deleteComment: (id: string) => `comment/delete?id=${id}`, // id комментария
     changeComment: (id: string) => `comment/change?id=${id}`,
     likeComment: (id: string) => `comment/like?id=${id}`,
-    photo: (id: string) => `static/photo?file_id=${id}`
+    // tinder
+    getNext: 'idea/get_unwatched_idea',
+    // media
+    photo: (id: string) => `static/photo?file_id=${id}`,
+    video: (id: string) => `static/video?file_id=${id}`,
+
 }
 
 export default URLS

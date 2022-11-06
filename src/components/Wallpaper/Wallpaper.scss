@@ -1,6 +1,8 @@
 @import '../../styles/breakpoints';
+@import '../../styles/mixin';
 
 .wallpaper {
+    position: relative;
     @include large-screen {
         height: 380px;
     }
@@ -16,4 +18,11 @@
     @include phone-screen {
         height: 320px;
     }
+
+    &__video-container {
+        width: 100%;
+        position: absolute;
+        z-index: 1;
+    }
 }
+
