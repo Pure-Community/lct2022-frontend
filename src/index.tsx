@@ -78,13 +78,13 @@ const App = observer(() => {
                 <Route path='' element={<Line />} />
                 <Route path='profile' element={<Profile />} />
                 <Route path='login' element={<Login />} />
-                <Route path='logout' element={<Logout />} />
                 <Route path='registration' element={<Registration />} />
+                <Route path='tinder' element={<Tinder />} />
+                <Route path='logout' element={<Logout />} />
                 <Route path='idea' >
                   <Route path=':id' element={<Idea />} />
                   <Route path='create' element={<IdeaCreate />} />
                 </Route>
-                <Route path='tinder' element={<Tinder />} />
               </Route>
             </Routes>
           </Layout>
@@ -95,7 +95,7 @@ const App = observer(() => {
 })
 
 root.render(
-  // <React.StrictMode>
-  <App />
-  // </React.StrictMode>
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
 );

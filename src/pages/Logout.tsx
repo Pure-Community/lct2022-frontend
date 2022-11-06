@@ -1,9 +1,9 @@
 import AppStoreContext from 'context/AppStoreContext'
-import React, { useContext, useEffect } from 'react'
+import React, { FC, useContext, useEffect } from 'react'
 import { Navigate } from 'react-router-dom'
 import UserStore from 'stores/UserStore'
 
-function Logout() {
+const Logout: FC = () => {
     const appStore = useContext(AppStoreContext)
 
     useEffect(() => {

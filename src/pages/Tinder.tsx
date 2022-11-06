@@ -7,11 +7,11 @@ import URLS from 'constants/urls'
 import AppStoreContext from 'context/AppStoreContext'
 import useAuthorization from 'hooks/useAuthorization'
 import IIdea from 'interfaces/IIdea'
-import React, { useContext, useEffect, useState } from 'react'
+import React, { FC, useContext, useEffect, useState } from 'react'
 import { API, sendRequest } from 'utils/requests'
 import './Tinder.scss'
 
-const Tinder = () => {
+const Tinder: FC = () => {
     const [idea, setIdea] = useState<IIdea>()
     const appStore = useContext(AppStoreContext)
     useAuthorization(appStore.authToken)

@@ -1,11 +1,11 @@
 import { Button, TextField } from '@mui/material'
 import { FileUploadSharp } from '@mui/icons-material'
-import React, { useState } from 'react'
+import React, { FC, useState } from 'react'
 import './IdeaCreate.scss'
 import URLS from 'constants/urls'
 import { API } from 'utils/requests'
 
-const IdeaCreate = () => {
+const IdeaCreate: FC = () => {
     const [name, setname] = useState('')
     const [description, setdescription] = useState('')
 
